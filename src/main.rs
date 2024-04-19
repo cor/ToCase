@@ -1,10 +1,9 @@
 mod args;
-
 use args::Args;
 use clap::Parser;
 use convert_case::Casing;
 use log::error;
-use postcard;
+
 use std::{
     fs::{self, File},
     io::{self, BufReader, Read, Write},
@@ -33,10 +32,12 @@ fn main() {
     });
 
     let output = match case {
-        args::Case::CamelCase => word.to_case(convert_case::Case::Camel),
-        args::Case::SnakeCase => word.to_case(convert_case::Case::Snake),
-        args::Case::LowerCase => word.to_case(convert_case::Case::Lower),
-        args::Case::UpperCase => word.to_case(convert_case::Case::Upper),
+        args::Case::Camel => word.to_case(convert_case::Case::Camel),
+        args::Case::Snake => word.to_case(convert_case::Case::Snake),
+        args::Case::Lower => word.to_case(convert_case::Case::Lower),
+        args::Case::Upper => word.to_case(convert_case::Case::Upper),
+        args::Case::Kebab => word.to_case(convert_case::Case::Kebab),
+        args::Case::UpperKebab => word.to_case(convert_case::Case::UpperKebab),
     };
     print!("{}", output);
 

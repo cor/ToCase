@@ -5,13 +5,17 @@ use strum::{Display, EnumString};
 #[derive(Display, Debug, Clone, Copy, EnumString, Serialize, Deserialize)]
 pub enum Case {
     #[strum(serialize = "cC")]
-    CamelCase,
+    Camel,
     #[strum(serialize = "c_c")]
-    SnakeCase,
+    Snake,
     #[strum(serialize = "cc")]
-    LowerCase,
+    Lower,
     #[strum(serialize = "CC")]
-    UpperCase,
+    Upper,
+    #[strum(serialize = "c-c")]
+    Kebab,
+    #[strum(serialize = "C-C")]
+    UpperKebab,
 }
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
